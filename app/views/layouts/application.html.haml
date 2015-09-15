@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    %title= content_for?(:title) ? yield(:title) : "Web Seo"
+    = stylesheet_link_tag :application, :media => "all"
+    = javascript_include_tag :application
+    = csrf_meta_tags
+  %body
+    %header.navbar.navbar-fixed-top.navbar-inverse
+      %nav.navbar-inner
+        .container
+          %a.brand{:href => "/"} Our First HTML5 haml example
+    #main{:role => "main"}
+      .container
+        .content
+          .row
+            .span12
+              = render 'layouts/messages'
+              = yield
