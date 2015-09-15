@@ -11,11 +11,11 @@
         .container
           %a.navbar-brand{:href => "/"} WEB SEO
           %ul.nav.navbar-nav.navbar-right
-            -if false
+            -if user_signed_in?
               %li=link_to 'Logout'
             -else
-              %li=link_to 'Sign in', root_path
-              %li=link_to 'Sign up', root_path
+              %li=link_to 'Sign in', new_user_session_path
+              %li=link_to 'Sign up', new_user_registration_path
     #main{:role => "main"}
       .container
         .content

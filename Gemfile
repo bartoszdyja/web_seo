@@ -15,6 +15,10 @@ gem 'devise', '~> 3.5.2'
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
 group :development do
