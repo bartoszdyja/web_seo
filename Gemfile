@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml', '~> 4.0.7'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'devise', '~> 3.5.2'
+gem 'decent_exposure', '~> 2.3.2'
 
 group :development, :test do
   gem 'byebug'
