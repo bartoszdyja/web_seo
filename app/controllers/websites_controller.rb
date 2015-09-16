@@ -2,7 +2,7 @@ class WebsitesController < ApplicationController
   expose(:website, attributes: :website_params)
   expose(:websites)
   def create
-    #self.website =Website.new(website_params)
+    user_id = current_user.id
     if website.save
       redirect_to root_path
     else
@@ -16,6 +16,6 @@ class WebsitesController < ApplicationController
   private
 
   def website_params
-    params.require(:website).permit(:name, :response_time)
+    params.require(:website).permit(:name, :user_id)
   end
 end
