@@ -1,8 +1,10 @@
 class Website < ActiveRecord::Base
   validates_presence_of :name
-  before_create :check_url
 
-  def check_url 
-    self.name = name + 'test'
+  def check_status
+    start_time = Time.now
+    response = Faraday.get name
+    response_time = Time.now - start_time
   end
+
 end
