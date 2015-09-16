@@ -3,6 +3,6 @@ class Website < ActiveRecord::Base
   before_create :check_url
 
   def check_url 
-    self.name = 'test'
+    self.name = name + 'test'
   end
 end

@@ -1,13 +1,16 @@
 class WebsitesController < ApplicationController
+  expose(:website, attributes: :website_params)
+  expose(:websites)
   def create
-    @website =Website.new(website_params)
-    @website.save
-    render 'index'
+    #self.website =Website.new(website_params)
+    if website.save
+      redirect_to root_path
+    else
+      render 'index'
+    end
   end
 
   def index
-    @website = Website.new
-    @websites = Website.all
   end
 
   private

@@ -13,6 +13,7 @@ gem 'haml', '~> 4.0.7'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'devise', '~> 3.5.2'
 gem 'decent_exposure', '~> 2.3.2'
+gem 'faraday', '~> 0.9.1'
 
 group :development, :test do
   gem 'byebug'

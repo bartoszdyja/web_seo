@@ -1,5 +1,5 @@
 %h1 Websites
-=form_for @website do |f|
+=form_for website do |f|
   = render 'layouts/messages', object: f.object
   =f.text_field :name
   =f.button :submit  
@@ -9,6 +9,6 @@
     %tr
       %th Name
   %tbody
-    -@websites.each do |w|
+    -websites.each do |w|
       %tr
         %td=w.name
