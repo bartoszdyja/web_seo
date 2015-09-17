@@ -12,7 +12,8 @@
           %a.navbar-brand{:href => "/"} WEB SEO
           %ul.nav.navbar-nav.navbar-right
             -if user_signed_in?
-              %li=link_to 'Logout'
+              %li=link_to "Welcome #{current_user.username}"
+              %li=link_to 'Logout', destroy_user_session_path, method: :delete
             -else
               %li=link_to 'Sign in', new_user_session_path
               %li=link_to 'Sign up', new_user_registration_path

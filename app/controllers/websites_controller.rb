@@ -1,4 +1,5 @@
 class WebsitesController < ApplicationController
+  before_filter :authenticate_user!
   expose(:website, attributes: :website_params)
   expose(:websites)
   def create
