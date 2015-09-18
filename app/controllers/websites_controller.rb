@@ -1,7 +1,7 @@
 class WebsitesController < ApplicationController
   before_filter :authenticate_user!
   expose(:website, attributes: :website_params)
-  expose(:websites)
+  expose(:websites) {current_user.websites.includes(:responses)}
   def create
     user_id = current_user.id
     if website.save
@@ -12,6 +12,7 @@ class WebsitesController < ApplicationController
   end
 
   def index
+
   end
 
   private

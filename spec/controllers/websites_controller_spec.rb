@@ -5,7 +5,7 @@ describe WebsitesController do
     login_user
 
     it "should have a current_user" do
-      subject.should be_nil
+      subject.current_user.should_not be_nil
     end
   end
 end

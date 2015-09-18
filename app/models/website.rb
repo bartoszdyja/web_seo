@@ -4,10 +4,14 @@ class Website < ActiveRecord::Base
   has_many :responses
   belongs_to :user
 
-  def check_status
+  def check_status                                                                                                                                                                                                                                                                                        
     start_time = Time.now
     response = Faraday.get name
     response_time = Time.now - start_time
+    responses.create(response_time: response_time, status: response.status)
   end
 
+
+
 end
+                                                                                                                                                                      
