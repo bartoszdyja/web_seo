@@ -1,7 +1,7 @@
 class Website < ActiveRecord::Base
   validates_presence_of :name
   after_create :check_status
-  has_many :responses
+  has_many :responses, dependent: :destroy
   belongs_to :user
 
   def check_status                                                                                                                                                                                                                                                                                        
