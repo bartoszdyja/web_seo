@@ -12,4 +12,6 @@ class Response < ActiveRecord::Base
       'N/A'
     end
   end
+
+
 end

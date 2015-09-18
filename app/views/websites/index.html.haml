@@ -9,10 +9,12 @@
     %tr
       %th Name
       %th Status
-      %th Last response time      
+      %th Response time 
+      %th Last update     
   %tbody
     -websites.each do |w|
       %tr
         %td=w.name
         %td=w.responses.last.try(:readable_status)
         %td=w.responses.last.try(:response_time)
+        %td=readable_time(w.responses.last.updated_at)
