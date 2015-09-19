@@ -18,5 +18,5 @@
         %td=w.name
         %td=w.responses.last.try(:readable_status)
         %td=w.responses.last.try(:response_time)
-        %td=readable_time(w.responses.last.updated_at)
+        %td=readable_time(w.responses.last.try(:updated_at))
         %td=link_to 'Show', website_path(w)

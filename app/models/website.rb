@@ -3,12 +3,16 @@ class Website < ActiveRecord::Base
   validates_url :name
   validates_uniqueness_of :name, message: ("Selected website has already been added")
   
-  after_create :check_status
+  after_create :check_status_async
   has_many :responses, dependent: :destroy
   belongs_to :user
 
+  def check_status_async
+    WebsiteWorker.perform_async(id)
+  end
+
   def check_status    
-    begin                                                                                                                                                                                                                                                                                    
+    begin                                                                                                                                                                                                                                                                                   
       start_time = Time.now
       response = Faraday.get name
       puts response
