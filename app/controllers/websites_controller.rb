@@ -5,9 +5,9 @@ class WebsitesController < ApplicationController
   def create
     user_id = current_user.id
     if website.save
-      redirect_to root_path
+      redirect_to root_path, flash: {error:website.errors }
     else
-      flash[:notice] = 'dupa'
+      
       render 'index'
     end
   end
