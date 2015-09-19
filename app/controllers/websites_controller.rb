@@ -7,6 +7,7 @@ class WebsitesController < ApplicationController
     if website.save
       redirect_to root_path
     else
+      flash[:notice] = 'dupa'
       render 'index'
     end
   end

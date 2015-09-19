@@ -6,14 +6,23 @@ describe WebsitesController do
     let!(:website) {create(:website)}
     login_user
     it "should have a current_user" do
-      subject.current_user.should_not be_nil
+      expect(subject.current_user).to_not be_nil
       expect(user.email).to eq 'email@pl.pl'
     end
 
     it "should create new website" do
       expect(website.name).to eq 'http://www.wp.pl'
       expect(website).to be_a(Website)
-      expect(website).to be_persisted      
+      expect(website).to be_persisted     
+    end
+
+    it "should create associated response" do
+      expect(website.responses).to_not be_nil
+      expect(website.responses.last.id).to eq website.id
+    end 
+
+    it "should create response" do
+      expect(website.responses).to_not be_nil
     end
 
     it "should redirect to root" do
@@ -23,7 +32,10 @@ describe WebsitesController do
   end
 
   context 'not logged in user' do
-    let (:use) {create :use}
+    let (:user) {create :user}
+    it 'should not be logged in' do
+      expect(subject.current_user).to be_nil
+    end
     it 'should be redirected to login page' do
       get :index
       expect(response).to redirect_to(new_user_session_path)
