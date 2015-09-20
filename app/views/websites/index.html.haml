@@ -1,8 +1,10 @@
 %h1 Websites
-=form_for website do |f|                                                                                                                                                                      
-  = render 'layouts/messages', object: f.object
-  =f.text_field :name
-  =f.button :submit  
+.row
+  .col-md-4
+    = simple_form_for(website) do |form|
+      =form.input :name, label: false
+      =form.button :submit, 'Add website'
+
 %hr/
 %table.table.table-striped
   %thead

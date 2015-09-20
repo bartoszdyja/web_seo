@@ -16,6 +16,7 @@ gem 'decent_exposure', '~> 2.3.2'
 gem 'faraday', '~> 0.9.1'
 gem 'validate_url'
 gem 'sidekiq'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'

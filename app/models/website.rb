@@ -21,7 +21,10 @@ class Website < ActiveRecord::Base
     rescue Faraday::Error::ConnectionFailed => e
       responses.create(response_time: nil, status: 503)
       errors.add(:connection, "is not available. We'll try to reach your domain later")
+      puts "Connection failed. We'll try to reach your domain later"
+
       return
+
     end
   end
 
