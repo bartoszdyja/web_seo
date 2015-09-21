@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  get 'keywords/index'
+
+  get 'keywords/index'
+
   root to: 'websites#index'
   devise_for :users
-  resources :websites
+  resources :websites do
+    resources :keywords
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

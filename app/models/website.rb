@@ -5,6 +5,7 @@ class Website < ActiveRecord::Base
   
   after_create :check_status_async
   has_many :responses, dependent: :destroy
+  has_many :keywords
   belongs_to :user
 
   def check_status_async

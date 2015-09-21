@@ -1,0 +1,18 @@
+%h2=website.name
+
+.row
+  .col-md-4
+    =simple_form_for keyword, url: website_keywords_path(website) do |form|
+      =form.input :name
+      =form.button :submit, 'Add keywords'
+%hr/
+%table.table.table-striped
+  %thead
+    %tr
+      %th Keyword 
+      %th Position
+  %tbody
+    -keywords.each do |k|
+      %tr
+        %td=k.name
+        %td=k.website.name

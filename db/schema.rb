@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921182847) do
+ActiveRecord::Schema.define(version: 20150921191211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,10 @@ ActiveRecord::Schema.define(version: 20150921182847) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "website_id"
   end
+
+  add_index "keywords", ["website_id"], name: "index_keywords_on_website_id", using: :btree
 
   create_table "responses", force: :cascade do |t|
     t.float    "response_time"
@@ -60,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150921182847) do
 
   add_index "websites", ["user_id"], name: "index_websites_on_user_id", using: :btree
 
+  add_foreign_key "keywords", "websites"
   add_foreign_key "responses", "websites"
   add_foreign_key "websites", "users"
 end

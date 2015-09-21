@@ -2,10 +2,12 @@ class WebsitesController < ApplicationController
   before_filter :authenticate_user!
   expose(:website, attributes: :website_params)
   expose(:websites) {current_user.websites.includes(:responses)}
+  expose(:keyword)
+  
+
   def create
     user_id = current_user.id
     if website.save
-      flash[:error] = website.errors
       redirect_to root_path
     else
       
