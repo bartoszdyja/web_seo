@@ -18,6 +18,7 @@ gem 'validate_url'
 gem 'sidekiq'
 gem 'simple_form'
 gem 'nokogiri'
+gem 'public_suffix', '~> 1.5.1'
 
 group :development, :test do
   gem 'byebug'
