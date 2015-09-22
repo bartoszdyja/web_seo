@@ -22,6 +22,6 @@ class WebsitesController < ApplicationController
   private
 
   def website_params
-    params.require(:website).permit(:name, :user_id)
+    params.require(:website).permit(:name, :user_id, :average_response_time)
   end
 end

@@ -13,6 +13,7 @@
       %th Status
       %th Response time 
       %th Last update  
+      %th Average response time
       %th Link   
   %tbody
     -websites.each do |w|
@@ -21,4 +22,5 @@
         %td=w.responses.last.try(:readable_status)
         %td=w.responses.last.try(:response_time)
         %td=readable_time(w.responses.last.try(:updated_at))
+        %td=w.try(:average_response_time)
         %td=link_to 'Show', website_keywords_path(w)

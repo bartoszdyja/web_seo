@@ -19,6 +19,7 @@ class Website < ActiveRecord::Base
       puts response
       response_time = Time.now - start_time
       responses.create(response_time: response_time, status: response.status)
+      self.update(average_response_time: responses.average(:response_time))
     rescue Faraday::Error::ConnectionFailed => e
       responses.create(response_time: nil, status: 503)
       errors.add(:connection, "is not available. We'll try to reach your domain later")
