@@ -1,11 +1,10 @@
 %h2=website.name
-
+%hr
 .row
   .col-md-4
     =simple_form_for keyword, url: website_keywords_path(website) do |form|
-      =form.input :name
+      =form.input :name, label: 'Keyword'
       =form.button :submit, 'Add keywords'
-%hr/
 %table.table.table-striped
   %thead
     %tr

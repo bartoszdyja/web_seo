@@ -271,6 +271,7 @@ DEPENDENCIES
   haml (~> 4.0.7)
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   pg
   rails (= 4.2.4)
   rspec-rails (~> 3.0.0)

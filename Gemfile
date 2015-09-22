@@ -17,6 +17,7 @@ gem 'faraday', '~> 0.9.1'
 gem 'validate_url'
 gem 'sidekiq'
 gem 'simple_form'
+gem 'nokogiri'
 
 group :development, :test do
   gem 'byebug'
