@@ -4,17 +4,16 @@ class Keyword < ActiveRecord::Base
   after_create :check_position
 
   def check_position
-    page = Nokogiri::HTML(open('http://www.google.com/search?num=10&q=positionly'))
-
-    page.search("cite").each do |l|
-      if l.content.include?(strip_url(website.name))
-        puts 'Found'
-      end
-    puts "res: #{l.content}"
+    page = Nokogiri::HTML(open('http://www.google.com/search?num=10&q='+name))
+    puts name
+    puts website.name
+    page.search("cite").each_with_index do |l, index|
+      puts "#{index} #{l.content}"
+      return index+1 if l.content.include?(strip_url(website.name))
     end
-      puts strip_url(website.name)
-
+    return
   end
+
 
   def strip_url(name)
     name.sub(/http:\/\/www./,'')
