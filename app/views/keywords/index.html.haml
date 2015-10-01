@@ -5,13 +5,16 @@
     =simple_form_for keyword, url: website_keywords_path(website) do |form|
       =form.input :name, label: 'Keyword'
       =form.button :submit, 'Add keywords'
-%table.table.table-striped
-  %thead
-    %tr
-      %th Keyword 
-      %th Position
-  %tbody
-    -keywords.each do |k|
+-if website.keywords.any?
+  %table.table.table-striped
+    %theadW
       %tr
-        %td=k.name
-        %td=k.website.name
+        %th Keyword 
+        %th Current position
+        %th Average position
+    %tbody
+      -keywords.each do |k|
+        %tr
+          %td=k.name
+          %td=k.positions.last.try(:position)
+          %td=k.average_position

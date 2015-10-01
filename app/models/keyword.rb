@@ -1,6 +1,7 @@
 require 'open-uri'
 class Keyword < ActiveRecord::Base
   belongs_to :website
+  has_many :positions, dependent: :destroy
   after_commit :check_position_async
 
   def check_position_async
@@ -22,6 +23,10 @@ class Keyword < ActiveRecord::Base
   
   def strip_url(name)
     name.sub(/http:\/\/www./,'')
+  end
+
+  def average_position
+    positions.average(:position)
   end
 
 end

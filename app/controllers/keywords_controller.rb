@@ -7,8 +7,9 @@ class KeywordsController < ApplicationController
   end
 
   def create
-    keyword.website_id=website.id
-    if keyword.save
+    @k = Keyword.find_or_create_by(name: keyword.name)
+    @k.website_id=website.id
+    if @k.save
       flash[:notice] = 'Keywords have been successfully added!'
       redirect_to website_keywords_path(website)
     else

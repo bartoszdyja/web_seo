@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001132751) do
+ActiveRecord::Schema.define(version: 20151001133337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,10 @@ ActiveRecord::Schema.define(version: 20151001132751) do
     t.integer  "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "keyword_id"
   end
+
+  add_index "positions", ["keyword_id"], name: "index_positions_on_keyword_id", using: :btree
 
   create_table "responses", force: :cascade do |t|
     t.float    "response_time"
@@ -71,6 +74,7 @@ ActiveRecord::Schema.define(version: 20151001132751) do
   add_index "websites", ["user_id"], name: "index_websites_on_user_id", using: :btree
 
   add_foreign_key "keywords", "websites"
+  add_foreign_key "positions", "keywords"
   add_foreign_key "responses", "websites"
   add_foreign_key "websites", "users"
 end

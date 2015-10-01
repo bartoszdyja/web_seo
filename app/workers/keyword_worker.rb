@@ -5,7 +5,7 @@ class KeywordWorker
     @keyword = Keyword.find(id)
     @keyword.check_position
     puts @keyword.check_position
- 
+    @keyword.positions.create!(position: @keyword.check_position)
     #puts @keyword.name
     #puts @keyword.website.name
     # page = Nokogiri::HTML(open('http://www.google.com/search?num=10&q='+@keyword.name))
